@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "sivalabs": {
+    "infosys": {
       "command": "java",
       "args": [
         "-jar",

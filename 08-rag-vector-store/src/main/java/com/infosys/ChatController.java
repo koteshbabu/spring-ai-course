@@ -41,7 +41,7 @@ class ChatController {
         this.vectorStore = vectorStore1;
         this.chatClient = builder
                 .defaultAdvisors(
-                        MessageChatMemoryAdvisor.builder(chatMemory).build(),
+                         MessageChatMemoryAdvisor.builder(chatMemory).build(),
                         QuestionAnswerAdvisor.builder(vectorStore).build(),
                         new SimpleLoggerAdvisor()
                 )
@@ -73,12 +73,12 @@ class ChatController {
     public Map<String, Object> embed(
             @RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
 
-        float[] floats1 = embeddingModel.embed("My name is Siva");
-        List<float[]> floats2 = embeddingModel.embed(List.of("My name is Siva", "I am a software engineer"));
-        Document doc = new Document("My name is Siva", Map.of("source", "uploaded-docs"));
+        float[] floats1 = embeddingModel.embed("My name is Koti");
+        List<float[]> floats2 = embeddingModel.embed(List.of("My name is Koti", "I am a software engineer"));
+        Document doc = new Document("My name is Koti", Map.of("source", "uploaded-docs"));
         float[] floats3 = embeddingModel.embed(doc);
 
-        EmbeddingRequest req = new EmbeddingRequest(List.of("My name is Siva", "I am a software engineer"), null);
+        EmbeddingRequest req = new EmbeddingRequest(List.of("My name is Koti", "I am a software engineer"), null);
         EmbeddingResponse response = embeddingModel.call(req);
 
         EmbeddingResponse embeddingResponse = this.embeddingModel.embedForResponse(List.of(message));

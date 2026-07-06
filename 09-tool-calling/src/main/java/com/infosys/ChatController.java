@@ -3,6 +3,7 @@ package com.infosys;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ class ChatController {
     ChatController(ChatClient.Builder builder, EmployeeTools employeeTools) {
         this.chatClient = builder
                 .defaultSystem("""
-                You are a helpful assistant for SivaLabs company.
+                You are a helpful assistant for infosys company.
                 You always respond based on the data you have from tools available to you.
                 If you don't know the answer, you will respond with "I don't know".
                 """)

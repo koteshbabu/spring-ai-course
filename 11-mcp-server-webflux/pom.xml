@@ -10,10 +10,10 @@
 		<version>3.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sivalabs</groupId>
+	<groupId>com.infosys</groupId>
 	<artifactId>11-mcp-server-webflux</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>11-sivalabs-mcp-server-webflux</name>
+	<name>11-mcp-server-webflux</name>
 
 	<properties>
 		<java.version>24</java.version>

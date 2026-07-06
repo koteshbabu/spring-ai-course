@@ -22,10 +22,10 @@ class ApplicationTests {
     @ParameterizedTest
     @ValueSource(strings = {
             "What is today's date?",
-            "Get details of employee id emp1002 of SivaLabs company",
-            "Which SivaLabs company employees are on leave on 2025-01-01?",
-            "Which SivaLabs company employees are on leave on today?",
-            "Apply leave for SivaLabs company employee id emp1001 on 2025-04-01",
+            "Get details of employee id emp1002 of Infosys company",
+            "Which Infosys company employees are on leave on 2025-01-01?",
+            "Which Infosys company employees are on leave on today?",
+            "Apply leave for Infosys company employee id emp1001 on 2025-04-01",
     })
     void chat(String prompt) {
         MvcTestResult testResult = mockMvcTester.post().uri("/api/chat")

@@ -21,7 +21,7 @@ import java.util.List;
 public class AiConfig {
     private static final Logger log = LoggerFactory.getLogger(AiConfig.class);
 
-    @Value("classpath:/data/about-siva.md")
+    @Value("classpath:/data/about-koti.md")
     private Resource biodataFile;
 
     @Value("classpath:/data/few-things-i-learned-the-hardway-in-15-years-of-my-career.md")

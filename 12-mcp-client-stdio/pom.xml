@@ -10,10 +10,10 @@
 		<version>3.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sivalabs</groupId>
+	<groupId>com.infosys</groupId>
 	<artifactId>12-mcp-client-stdio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>12-sivalabs-mcp-client-stdio</name>
+	<name>12-mcp-client-stdio</name>
 
 	<properties>
 		<java.version>24</java.version>
