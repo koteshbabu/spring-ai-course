@@ -10,7 +10,7 @@
         <version>3.5.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.sivalabs.springaicourse</groupId>
+    <groupId>com.infosys</groupId>
     <artifactId>02-openai-compat-chat</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>02-openai-compat-chat</name>

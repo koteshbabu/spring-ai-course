@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "sivalabs": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/Users/staff/workspace/spring-ai-course/10-mcp-server-stdio/target/10-mcp-server-stdio.jar"
+      ]
+    }
+  }
+}

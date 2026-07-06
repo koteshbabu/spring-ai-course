@@ -10,7 +10,7 @@
 		<version>3.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sivalabs</groupId>
+	<groupId>com.infosys</groupId>
 	<artifactId>03-chat-ollama</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>03-chat-ollama</name>
