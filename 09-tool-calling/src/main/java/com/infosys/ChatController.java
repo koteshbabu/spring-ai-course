@@ -22,7 +22,7 @@ class ChatController {
                 You always respond based on the data you have from tools available to you.
                 If you don't know the answer, you will respond with "I don't know".
                 """)
-                .defaultTools(employeeTools, new DateTimeTools())
+                 .defaultTools(employeeTools, new DateTimeTools())
                 .defaultAdvisors(new SimpleLoggerAdvisor())
                 .build();
     }

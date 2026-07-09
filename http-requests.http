@@ -34,12 +34,12 @@ GET http://localhost:8080/api/embedding
 
 
 ### Search Vector Store
-GET http://localhost:8080/api/search?query="how to contact Siva"
+GET http://localhost:8080/api/search?query="how to contact koti"
 
 ### Chat
 POST http://localhost:8080/api/chat
 Content-Type: application/json
 
 {
-  "prompt": "How to contact Siva?"
+  "prompt": "How to contact koti?"
 }

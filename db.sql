@@ -44,7 +44,7 @@ create table comments
 
 insert into users(id, email, password, name, role, created_at) values
 (1,'admin@gmail.com','$2a$10$hKDVYxLefVHV/vtuPhWD3OigtRyOykRLDdUAp80Z1crSoS1lFqaFS','Administrator', 'ROLE_ADMIN', CURRENT_TIMESTAMP),
-(2,'siva@gmail.com','$2a$10$UFEPYW7Rx1qZqdHajzOnB.VBR3rvm7OI7uSix4RadfQiNhkZOi2fi','Siva Prasad', 'ROLE_USER', CURRENT_TIMESTAMP);
+(2,'koti@gmail.com','$2a$10$UFEPYW7Rx1qZqdHajzOnB.VBR3rvm7OI7uSix4RadfQiNhkZOi2fi','Koti', 'ROLE_USER', CURRENT_TIMESTAMP);
 
 insert into posts(id, title, slug, content, created_by, created_at, updated_at) values
 (1,'Installing LinuxMint','installing-linuxmint','Installing LinuxMint 17', 1, '2014-01-20', now()),

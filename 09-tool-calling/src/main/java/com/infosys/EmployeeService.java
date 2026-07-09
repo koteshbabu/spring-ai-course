@@ -16,7 +16,7 @@ public class EmployeeService {
     @PostConstruct
     void init() {
         employeeTable.put("emp1001", new Employee("emp1001", "John Doe", "john.doe@example.com"));
-        employeeTable.put("emp1002", new Employee("emp1002", "Siva", "siva@example.com"));
+        employeeTable.put("emp1002", new Employee("emp1002", "Koti", "koti@example.com"));
         employeeTable.put("emp1003", new Employee("emp1003", "James", "james@example.com"));
 
         employeeLeavesTable.put(LocalDate.now(), List.of("emp1001", "emp1003"));

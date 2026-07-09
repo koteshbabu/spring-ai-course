@@ -67,7 +67,7 @@ class ChatController {
     record TitleSuggestionsResponse(List<String> titles) {}
 
     @PostMapping("/api/suggest-titles")
-    TitleSuggestionsResponse suggestTitles(@RequestBody @Valid TitleSuggestionsRequest req) {
+    List<String> suggestTitles(@RequestBody @Valid TitleSuggestionsRequest req) {
         String response;
         ListOutputConverter outputConverter = new ListOutputConverter();
 
@@ -89,8 +89,9 @@ class ChatController {
         response = chatClient.prompt().messages(message).call().content();
 
         List<String> titles = outputConverter.convert(response);
+        return  titles;
 
-        return new TitleSuggestionsResponse(titles);
+//        return new TitleSuggestionsResponse(titles);
     }
 
     @GetMapping("/api/langs")
@@ -99,7 +100,7 @@ class ChatController {
         MapOutputConverter outputConverter = new MapOutputConverter();
 
         PromptTemplate pt = new PromptTemplate("""
-        Return all popular programming languages and their inception year.
+        Return any 10 popular programming languages and their inception year.
         
         {format}
         """);

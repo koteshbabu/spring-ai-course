@@ -49,7 +49,7 @@ public class AiConfig {
         //DocumentReader documentReader = new PagePdfDocumentReader(resource);
 
         //For loading PDF, DOC/DOCX, PPT/PPTX, and HTML docs
-        //DocumentReader documentReader = new TikaDocumentReader(sivaBiodataFile);
+        //DocumentReader documentReader = new TikaDocumentReader(kotiBiodataFile);
 
         DocumentReader documentReader = new MarkdownDocumentReader(resource, MarkdownDocumentReaderConfig.defaultConfig());
 

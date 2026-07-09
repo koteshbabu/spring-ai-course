@@ -1,5 +1,5 @@
 # Mastering Spring AI Course
-This is a complete course to master [Spring AI](https://spring.io/projects/spring-ai) by [SivaLabs](https://www.youtube.com/sivalabs).
+This is a complete course to master [Spring AI](https://spring.io/projects/spring-ai) by [Infosys](https://www.youtube.com/infosys).
 
 ## Table of Contents
 1. [Getting Started with Spring AI and OpenAI](https://youtu.be/djb3KRV-cno)
