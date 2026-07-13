@@ -43,7 +43,5 @@ class ApplicationTests {
                     assertThat(output.content()).isNotBlank();
                     System.out.println("Response:\n"+output.content());
                 });
-
     }
-
 }

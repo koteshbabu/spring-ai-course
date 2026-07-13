@@ -3,6 +3,7 @@ package com.infosys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,8 +18,15 @@ public class EmployeeTools {
         this.employeeService = employeeService;
     }
 
+    @Tool(name="createNewEmployee", description="create a new infosys employee with the given details.")
+    public Employee addEmployee(@ToolParam(required = false, description="Employee Id") Integer empId,
+                                @ToolParam(required = true, description = "Employee Name") String name,
+                                @ToolParam(required = true, description = "Employee Email") String email) {
+        return employeeService.addEmployee(name, empId, email);
+    }
+
     @Tool(description = "Get employee details for a given employee id of Infosys company")
-    public Employee getEmployee(String empId) {
+    public Employee getEmployee(Integer empId) {
         log.info("Getting employee: {}", empId);
         Employee employee = employeeService.getEmployee(empId);
         log.info("Employee: {}", employee);
@@ -33,8 +41,15 @@ public class EmployeeTools {
         return employeesOnLeave;
     }
 
+    @Tool(description = "Find all existing employees in Infosys")
+    public List<Employee> findAllEmployees(){
+        List<Employee> employees = employeeService.getAllEmployees();
+        log.info("Finding employees on leave for date: {}", employees);
+        return  employees;
+    }
+
     @Tool(description = "Apply leave for a given employee id of Infosys company and date in YYYY-MM-DD format")
-    public void applyLeave(String empId, LocalDate date) {
+    public void applyLeave(Integer empId, LocalDate date) {
         log.info("Applying leave for employee: {} on date: {}", empId, date);
         employeeService.applyLeave(empId, date);
     }

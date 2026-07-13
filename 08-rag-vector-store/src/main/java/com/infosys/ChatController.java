@@ -41,7 +41,7 @@ class ChatController {
         this.vectorStore = vectorStore1;
         this.chatClient = builder
                 .defaultAdvisors(
-                         MessageChatMemoryAdvisor.builder(chatMemory).build(),
+                          MessageChatMemoryAdvisor.builder(chatMemory).build(),
                         QuestionAnswerAdvisor.builder(vectorStore).build(),
                         new SimpleLoggerAdvisor()
                 )
