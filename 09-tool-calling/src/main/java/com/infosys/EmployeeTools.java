@@ -25,6 +25,15 @@ public class EmployeeTools {
         return employeeService.addEmployee(name, empId, email);
     }
 
+    @Tool(name="createNewEmployees", description="create 1 or more infosys employees with the given details.")
+    public List<Employee> addEmployees(List<Employee> employees) {
+
+        return employees.stream()
+                .map(employee -> employeeService.addEmployee(
+                        employee.name(), employee.empId(), employee.email()
+                )).toList();
+    }
+
     @Tool(description = "Get employee details for a given employee id of Infosys company")
     public Employee getEmployee(Integer empId) {
         log.info("Getting employee: {}", empId);

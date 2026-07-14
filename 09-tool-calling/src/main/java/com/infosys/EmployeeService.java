@@ -15,16 +15,16 @@ public class EmployeeService {
     private static final Map<Integer, Employee> employeeTable = new HashMap<>();
     private static final Map<LocalDate, List<Integer>> employeeLeavesTable = new HashMap<>();
 
-    @PostConstruct
-    void init() {
-        employeeTable.put(1001, new Employee(1001, "John Doe", "john.doe@example.com"));
-        employeeTable.put(1002, new Employee(1002, "Koti", "koti@example.com"));
-        employeeTable.put(1003, new Employee(1003, "James", "james@example.com"));
-
-        employeeLeavesTable.put(LocalDate.now(), List.of(1001, 1003));
-        employeeLeavesTable.put(LocalDate.of(2025, 1, 1), List.of(1001, 1002));
-        employeeLeavesTable.put(LocalDate.of(2025, 1, 2), List.of(1002, 1003));
-    }
+//    @PostConstruct
+//    void init() {
+//        employeeTable.put(1001, new Employee(1001, "John Doe", "john.doe@example.com"));
+//        employeeTable.put(1002, new Employee(1002, "Koti", "koti@example.com"));
+//        employeeTable.put(1003, new Employee(1003, "James", "james@example.com"));
+//
+//        employeeLeavesTable.put(LocalDate.now(), List.of(1001, 1003));
+//        employeeLeavesTable.put(LocalDate.of(2025, 1, 1), List.of(1001, 1002));
+//        employeeLeavesTable.put(LocalDate.of(2025, 1, 2), List.of(1002, 1003));
+//    }
 
     Employee getEmployee(Integer empId) {
         return employeeTable.get(empId);
@@ -52,7 +52,8 @@ public class EmployeeService {
         }
         List<Integer> empIds = employeeLeavesTable.get(date);
         if(empIds == null) {
-            empIds = List.of(empId);
+            empIds = new ArrayList<>();
+            empIds.add(empId);
         } else {
             empIds.add(empId);
         }
