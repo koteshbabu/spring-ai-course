@@ -19,10 +19,9 @@ public class EmployeeTools {
     }
 
     @Tool(name="createNewEmployee", description="create a new infosys employee with the given details.")
-    public Employee addEmployee(@ToolParam(required = false, description="Employee Id") Integer empId,
-                                @ToolParam(required = true, description = "Employee Name") String name,
+    public Employee addEmployee(@ToolParam(required = true, description = "Employee Name") String name,
                                 @ToolParam(required = true, description = "Employee Email") String email) {
-        return employeeService.addEmployee(name, empId, email);
+        return employeeService.addEmployee(name, email);
     }
 
     @Tool(name="updateExistingEmployee", description="update the employee details for the employee with given id")
@@ -32,8 +31,8 @@ public class EmployeeTools {
     }
 
     @Tool(name="deleteExistingEmployee", description="delete the employee details for the employee with given id")
-    public Employee deleteEmployee(@ToolParam(required = false, description="Employee Id") Integer empId) {
-        return employeeService.deleteEmployee(empId);
+    public void deleteEmployee(@ToolParam(required = false, description="Employee Id") Integer empId) {
+         employeeService.deleteEmployee(empId);
     }
 
     @Tool(name="deleteAllExistingEmployees", description="delete all employees details for infosys company")
