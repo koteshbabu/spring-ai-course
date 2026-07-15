@@ -2,6 +2,7 @@ package com.infosys;
 
 import jakarta.annotation.PostConstruct;
 import org.apache.logging.log4j.util.Strings;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -26,6 +27,14 @@ public class EmployeeService {
 //        employeeLeavesTable.put(LocalDate.of(2025, 1, 2), List.of(1002, 1003));
 //    }
 
+    Employee deleteEmployee(Integer empId) {
+       return employeeTable.remove(empId);
+    }
+
+    void deleteAllEmployees() {
+        employeeTable.clear();
+    }
+
     Employee getEmployee(Integer empId) {
         return employeeTable.get(empId);
     }
@@ -45,6 +54,17 @@ public class EmployeeService {
         return empIds.stream().map(employeeTable::get).toList();
     }
 
+    void cancelLeave(Integer empId, LocalDate leaveDate) {
+        if (leaveDate.isBefore(LocalDate.now())) {
+            throw new RuntimeException("Leaves of past dates can't be cancelled");
+        }
+        List<Integer> empIds = employeeLeavesTable.get(leaveDate);
+        if (CollectionUtils.isEmpty(empIds)) {
+            throw new RuntimeException("Employee: "+empId+" is not on leave on "+leaveDate);
+        }
+        empIds.remove(empId);
+    }
+
     void applyLeave(Integer empId, LocalDate date) {
 
         if (date.isBefore(LocalDate.now())) {
@@ -60,6 +80,31 @@ public class EmployeeService {
         employeeLeavesTable.put(date, empIds);
     }
 
+    void applyLeavesWithInDates(Integer empId, LocalDate startDate, LocalDate endDate) {
+
+        List<LocalDate> inBetweenDates = startDate.datesUntil(endDate).toList();
+
+        for (LocalDate date : startDate.datesUntil(endDate).toList()) {
+            applyLeave(empId, date);
+        }
+        applyLeave(empId, endDate);
+    }
+
+    void cancelLeavesWithInDates(Integer empId, LocalDate startDate, LocalDate endDate) {
+        List<LocalDate> inBetweenDates = startDate.datesUntil(endDate).toList();
+
+        for (LocalDate date : startDate.datesUntil(endDate).toList()) {
+            cancelLeave(empId, date);
+        }
+        cancelLeave(empId, endDate);
+    }
+
+    public  Employee updateEmployee(Employee employee) {
+        employeeTable.put(employee.empId(), employee);
+        return employee;
+    }
+
+
     public Employee addEmployee(String name, Integer empId, String email) {
         if (Strings.isBlank(name) || Strings.isBlank(email)) {
             throw new RuntimeException("Employee Name and Email are mandatory");
@@ -68,6 +113,10 @@ public class EmployeeService {
         if (empId == null) {
            List<Integer> empIds = employeeTable.values().stream().map(Employee::empId).toList();
             empId = CollectionUtils.isEmpty(empIds) ? 1 : Collections.max(empIds)+1;
+        } else {
+            if (employeeTable.get(empId) != null) {
+                throw new RuntimeException("An employee with that id: "+empId+" exists already.");
+            }
         }
 
         Employee employee = new Employee(empId, name,email);

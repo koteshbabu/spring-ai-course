@@ -21,11 +21,8 @@ import java.util.List;
 public class AiConfig {
     private static final Logger log = LoggerFactory.getLogger(AiConfig.class);
 
-    @Value("classpath:/data/about-koti.md")
+    @Value("classpath:/data/about-infosys.md")
     private Resource biodataFile;
-
-    @Value("classpath:/data/few-things-i-learned-the-hardway-in-15-years-of-my-career.md")
-    private Resource careerLessonsFile;
 
     /*@Bean
     VectorStore vectorStore(EmbeddingModel embeddingModel) {
@@ -36,7 +33,6 @@ public class AiConfig {
     ApplicationRunner applicationRunner(VectorStore vectorStore) {
         return args -> {
             loadDocument(vectorStore, biodataFile);
-            loadDocument(vectorStore, careerLessonsFile);
         };
     }
 
