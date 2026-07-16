@@ -7,6 +7,7 @@ import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -36,7 +37,7 @@ public class EmployeeTools {
     }
 
     @Tool(name="deleteAllExistingEmployees", description="delete all employees details for infosys company")
-    public void deleteAllEmployees(@ToolParam(required = false, description="Employee Id") Integer empId) {
+    public void deleteAllEmployees() {
         employeeService.deleteAllEmployees();
     }
 
@@ -54,6 +55,11 @@ public class EmployeeTools {
         List<Employee> employeesOnLeave = employeeService.findEmployeesOnLeave(date);
         log.info("Employees on leave: {} on date {}", employeesOnLeave, date);
         return employeesOnLeave;
+    }
+
+    @Tool(description = "Find all days on which employee with the given id is on leave")
+    public Collection<LocalDate> getAllEmployeeLeaveDaysBasedOnEmployeeId(Integer employeeId) {
+        return employeeService.findAllLeavesBasedOnEmployeeId(employeeId);
     }
 
     @Tool(description = "Find all existing employees in Infosys")

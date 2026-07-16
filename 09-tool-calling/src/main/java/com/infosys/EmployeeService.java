@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -48,6 +49,11 @@ public class EmployeeService {
             throw new RuntimeException("Leaves of past dates can't be cancelled");
         }
         employeeLeaveRepository.deleteByLeaveDateAndEmployeeId( leaveDate,  empId);
+    }
+
+    public Collection<LocalDate> findAllLeavesBasedOnEmployeeId(Integer employeeId){
+        List<EmployeeLeave> employeeLeaves = employeeLeaveRepository.findAllByEmployeeId(employeeId);
+        return employeeLeaves.stream().map(EmployeeLeave::getLeaveDate).collect(Collectors.toSet());
     }
 
     void applyLeave(Integer empId, LocalDate leaveDate) {
